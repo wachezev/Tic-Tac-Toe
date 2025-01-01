@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url(fonts/Poppins-ExtraBoldItalic.ttf);
+}
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-dark-color: #10121a;
+  --background-dark-grey: #191d2b;
+  --border-color: #2e344e;
+  --background-light-color: #f1f1f1;
+  --background-light-color-2: rgba(3, 127, 255, 0.3);
+  --white-color: #fff;
+  --font-light-color: #a4acc4;
+  --font-dark-color: #313131;
+  --font-dark-color-2: #151515;
+  --sidebar-dark-color: #191d2b;
+  --scrollbar-bg-color: #c01717;
+  --scrollbar-thumb-color: #6b6b6b;
+  --scrollbar-width: 12px;
+  --cell-size: 100px;
+  --l: 10px;
+}
+.board {
+  font-family: "Poppins";
+  font-size: 1rem;
+  background-color: var(--background-dark-color);
+  color: var(--font-light-color);
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  position: relative;
+}
+.cell::before {
+  content: "";
+  font-size: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cell.x::before {
+  content: "X";
+  color: var(--primary-color);
+}
+.cell.o::before {
+  content: "O";
+  color: var(--secondary-color);
+}
+.cell.x,
+.cell.o {
+  cursor: not-allowed;
+}
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+  border-left: none;
+}
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+  border-right: none;
+}
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+  border-bottom: none;
+}
+.board.x .cell:not(.o):not(.x):hover {
+  background-color: rgb(51, 150, 153);
+  background-size: 80% 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 400ms;
+  opacity: 75%;
+}
+.board.o .cell:not(.x):not(.o):hover {
+  background-color: rgb(50, 255, 9);
+  background-size: 80% 80%;
+  background-position: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: 400ms;
+  opacity: 75%;
+}
+.winningMessage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+.winningMessage.show {
+  display: flex;
+}
+.winningMessagetext {
+  font-size: 2rem;
+  color: var(--white-color);
+  margin-bottom: 20px;
+  font-family: "Poppins";
+}
+#restart {
+  font-family: "Poppins";
+  font-size: 1rem;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+#restart:hover {
+  background-color: #26c207;
+  border-radius: 15px;
+  transition: 300ms;
+  box-shadow: #00ff37 0px 0px 10px;
+}
+.timer {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: var(--white-color);
+  font-family: "Poppins";
+}
+
